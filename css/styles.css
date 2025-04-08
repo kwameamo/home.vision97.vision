@@ -1,0 +1,237 @@
+/* 
+  Vision'97 Main Stylesheet
+  A clean, responsive design for Vision'97 website
+*/
+
+/* Base styles and resets */
+*, *::after, *::before { 
+    box-sizing: border-box; 
+  }
+  
+  html { 
+    background: #fff; 
+    font-family: sans-serif; 
+    -ms-text-size-adjust: 100%; 
+    -webkit-text-size-adjust: 100%; 
+  }
+  
+  body { 
+    font-family: 'Roboto', sans-serif; 
+    min-height: 100vh; 
+    color: #fafae5; 
+    background-color: #222328; 
+    margin: 0;
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale; 
+  }
+  
+  a { 
+    text-decoration: none; 
+    color: #4f515a; 
+    outline: none; 
+  }
+  
+  a:hover, a:focus { 
+    color: #fafae5; 
+    outline: none; 
+  }
+  
+  .hidden { 
+    position: absolute; 
+    overflow: hidden; 
+    width: 0; 
+    height: 0; 
+    pointer-events: none; 
+  }
+  
+  /* Layout */
+  main { 
+    position: relative; 
+    width: 100%; 
+  }
+  
+  .content {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0 auto;
+    padding: 3em 2em;
+  }
+  
+  .menu {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  /* Logo */
+  .logo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+  }
+  
+  .logo img {
+    width: 300px;
+    height: auto;
+    max-width: 100%;
+  }
+  
+  /* Video container */
+  .video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 aspect ratio */
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 30px;
+    width: 100%;
+  }
+  
+  .video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: none;
+  }
+  
+  /* Menu styles */
+  .menu--tsula { 
+    font-family: 'Space Mono', monospace; 
+  }
+  
+  .menu--tsula .menu__item { 
+    padding-left: 0.25em; 
+  }
+  
+  .menu--tsula .menu__item-name {
+    font-size: 1em;
+    text-transform: uppercase;
+    color: #5a5bd3;
+  }
+  
+  .menu--tsula .menu__item:hover .menu__item-name,
+  .menu--tsula .menu__item:focus .menu__item-name {
+    color: #222328;
+    background: #5a5bd3;
+  }
+  
+  .menu--tsula .menu__item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 100%;
+    width: 0.9em;
+    height: 1em;
+    opacity: 0;
+    background: rgba(90,91,211,0.3);
+    animation: none;
+  }
+  
+  .menu--tsula .menu__item-label {
+    margin: 0;
+    color: #999caa;
+  }
+  
+  .menu--tsula .menu__item:hover::before,
+  .menu--tsula .menu__item:focus::before {
+    animation: blinkblink 0.4s cubic-bezier(0.5,0,1,1) infinite alternate;
+  }
+  
+  .menu__item {
+    line-height: 1;
+    position: relative;
+    display: block;
+    margin: 1em 0;
+    outline: none;
+    transition: transform 0.3s;
+  }
+  
+  .menu__item:hover {
+    transform: translateX(5px);
+  }
+  
+  .menu__item-name, .menu__item-label {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .menu__item-name { 
+    font-size: 1.25em; 
+  }
+  
+  .menu__item-label { 
+    margin: 0 0 0 0.5em; 
+    display: inline-block;
+  }
+  
+  /* Footer */
+  .footer-text {
+    margin-top: 30px;
+    text-align: center;
+    font-size: 0.9em;
+    color: #999caa;
+  }
+  
+  /* Animations */
+  @keyframes blinkblink {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+  
+  /* JavaScript-enabled styles */
+  .js body { 
+    opacity: 0; 
+    transition: opacity 0.3s; 
+  }
+  
+  .js body.render { 
+    opacity: 1; 
+  }
+  
+  /* Responsive styles */
+  @media screen and (max-width: 768px) {
+    .content {
+      padding: 2em 1em;
+    }
+    
+    .logo img {
+      width: 250px;
+    }
+    
+    .menu__item-name {
+      font-size: 1.1em;
+    }
+    
+    .menu__item-label {
+      display: block;
+      margin: 0.3em 0 0 0.5em;
+      font-size: 0.9em;
+    }
+  }
+  
+  @media screen and (max-width: 480px) {
+    .content {
+      padding: 1.5em 1em;
+    }
+    
+    .logo img {
+      width: 200px;
+    }
+    
+    .menu__item {
+      margin: 1.5em 0;
+    }
+    
+    .menu__item-name {
+      font-size: 1em;
+    }
+    
+    .menu__item-label {
+      font-size: 0.8em;
+      margin-left: 0.3em;
+    }
+  }
