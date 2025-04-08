@@ -1,7 +1,7 @@
 /* 
-  Vision'97 Main Stylesheet
-  A clean, responsive design for Vision'97 website
-*/
+ * Vision'97 Complete Stylesheet
+ * Matching the original site styling
+ */
 
 /* Base styles and resets */
 *, *::after, *::before { 
@@ -70,11 +70,11 @@
   .logo {
     display: flex;
     justify-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 30px;
   }
   
   .logo img {
-    width: 300px;
+    width: 426px;
     height: auto;
     max-width: 100%;
   }
@@ -85,7 +85,7 @@
     padding-bottom: 56.25%; /* 16:9 aspect ratio */
     height: 0;
     overflow: hidden;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
     width: 100%;
   }
   
@@ -105,12 +105,15 @@
   
   .menu--tsula .menu__item { 
     padding-left: 0.25em; 
+    margin-bottom: 1.5em;
   }
   
   .menu--tsula .menu__item-name {
     font-size: 1em;
     text-transform: uppercase;
     color: #5a5bd3;
+    transition: background 0.2s, color 0.2s;
+    padding: 0.1em 0.2em;
   }
   
   .menu--tsula .menu__item:hover .menu__item-name,
@@ -122,7 +125,7 @@
   .menu--tsula .menu__item::before {
     content: '';
     position: absolute;
-    top: 0;
+    top: 0.3em;
     right: 100%;
     width: 0.9em;
     height: 1em;
@@ -134,6 +137,12 @@
   .menu--tsula .menu__item-label {
     margin: 0;
     color: #999caa;
+    font-size: 0.95em;
+  }
+  
+  .menu--tsula .menu__item-label span {
+    display: inline-block;
+    opacity: 1;
   }
   
   .menu--tsula .menu__item:hover::before,
@@ -142,10 +151,10 @@
   }
   
   .menu__item {
-    line-height: 1;
+    line-height: 1.5;
     position: relative;
     display: block;
-    margin: 1em 0;
+    margin: 1.2em 0;
     outline: none;
     transition: transform 0.3s;
   }
@@ -170,7 +179,7 @@
   
   /* Footer */
   .footer-text {
-    margin-top: 30px;
+    margin-top: 40px;
     text-align: center;
     font-size: 0.9em;
     color: #999caa;
@@ -199,7 +208,7 @@
     }
     
     .logo img {
-      width: 250px;
+      width: 340px;
     }
     
     .menu__item-name {
@@ -207,9 +216,13 @@
     }
     
     .menu__item-label {
-      display: block;
-      margin: 0.3em 0 0 0.5em;
+      display: inline-block;
+      margin: 0 0 0 0.5em;
       font-size: 0.9em;
+    }
+    
+    .menu--tsula .menu__item {
+      margin-bottom: 1.2em;
     }
   }
   
@@ -219,7 +232,7 @@
     }
     
     .logo img {
-      width: 200px;
+      width: 260px;
     }
     
     .menu__item {
@@ -231,7 +244,8 @@
     }
     
     .menu__item-label {
-      font-size: 0.8em;
-      margin-left: 0.3em;
+      font-size: 0.85em;
+      display: block;
+      margin: 0.3em 0 0 0.5em;
     }
   }
