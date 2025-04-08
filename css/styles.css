@@ -69,12 +69,12 @@
   /* Logo */
   .logo {
     display: flex;
-    justify-content: center;
+    justify-content: left;
     margin-bottom: 30px;
   }
   
   .logo img {
-    width: 426px;
+    width: 300px;
     height: auto;
     max-width: 100%;
   }
@@ -208,7 +208,7 @@
     }
     
     .logo img {
-      width: 340px;
+      width: 300px;
     }
     
     .menu__item-name {
@@ -232,7 +232,7 @@
     }
     
     .logo img {
-      width: 260px;
+      width: 200px;
     }
     
     .menu__item {
