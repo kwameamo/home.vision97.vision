@@ -97,6 +97,15 @@
     height: 100%;
     border: none;
   }
+
+  /* Gif container */
+  .video-container {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    margin-bottom: 40px;
+    width: 80%;
+  }
   
   /* Menu styles */
   .menu--tsula { 
