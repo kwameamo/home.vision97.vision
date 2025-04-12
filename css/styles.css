@@ -82,7 +82,7 @@
 /* Video container */
 .video-container {
   position: relative;
-  /* padding-bottom: 56.25%;  */
+  padding-bottom: 66.6667%; /* 3:2 aspect ratio */
   height: 0;
   overflow: hidden;
   margin-bottom: 40px;
