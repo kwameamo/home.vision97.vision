@@ -153,38 +153,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
 
-// Add this script to handle lazy loading of the GIF
-document.addEventListener('DOMContentLoaded', function() {
-  // Handle lazy loading for GIFs
-  var lazyGifs = document.querySelectorAll('.lazy-gif');
-  
-  if ('IntersectionObserver' in window) {
-    let lazyGifObserver = new IntersectionObserver(function(entries, observer) {
-      entries.forEach(function(entry) {
-        if (entry.isIntersecting) {
-          let lazyGif = entry.target;
-          lazyGif.src = lazyGif.dataset.src;
-          lazyGif.classList.remove('lazy-gif');
-          lazyGifObserver.unobserve(lazyGif);
-        }
-      });
-    });
-    
-    lazyGifs.forEach(function(lazyGif) {
-      lazyGifObserver.observe(lazyGif);
-    });
-  } else {
-    // Fallback for browsers without intersection observer
-    setTimeout(function() {
-      lazyGifs.forEach(function(lazyGif) {
-        lazyGif.src = lazyGif.dataset.src;
-        lazyGif.classList.remove('lazy-gif');
-      });
-    }, 200); // Small delay to allow critical content to load first
-  }
-});
-
-
 // Optimized audio handling
 const audioControl = document.getElementById('audioControl');
 const audioOnIcon = document.getElementById('audioOnIcon');
