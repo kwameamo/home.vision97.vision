@@ -98,6 +98,11 @@
     border: none;
   }
   
+  .vp-center {
+    display: flex;
+    align-items: center;
+    justify-content: left;
+} 
   /* Menu styles */
   .menu--tsula { 
     font-family: 'Space Mono', monospace; 
