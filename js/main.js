@@ -1,6 +1,5 @@
 /**
  * Vision'97 Main JavaScript
- * Replicating the original site's interactions
  */
 
 // Check for CSS Variables support
@@ -20,7 +19,6 @@ if (!supportsCssVars()) {
 
 /**
  * Simple function to split text into individual characters
- * This replaces the functionality of charming.js from the original
  */
 function charming(element) {
   const text = element.textContent.trim();
@@ -43,7 +41,6 @@ function charming(element) {
 
 /**
  * Function to animate elements with staggered timing
- * This replicates the basic functionality of anime.js from the original
  */
 function animateElements(elements, options) {
   const defaults = {
@@ -183,7 +180,7 @@ document.addEventListener('DOMContentLoaded', function() {
         lazyGif.src = lazyGif.dataset.src;
         lazyGif.classList.remove('lazy-gif');
       });
-    }, 500); // Small delay to allow critical content to load first
+    }, 200); // Small delay to allow critical content to load first
   }
 });
 
@@ -206,40 +203,51 @@ if (audioPreference === 'off') {
 } else {
   audioOnIcon.style.display = 'block';
   audioOffIcon.style.display = 'none';
-}
-
-// Only start audio loading/playing after user interaction
-const setupAudioAfterInteraction = function() {
-  // Only set up once
-  document.removeEventListener('click', setupAudioAfterInteraction);
-  document.removeEventListener('touchstart', setupAudioAfterInteraction);
-  document.removeEventListener('keydown', setupAudioAfterInteraction);
   
-  // Defer loading the audio file
-  setTimeout(() => {
-    if (audioPreference !== 'off') {
-      // Start loading the audio file
-      backgroundMusic.preload = 'auto';
-      
-      // Play after a slight delay to prevent blocking
-      setTimeout(() => {
+  // Start loading the audio file immediately
+  backgroundMusic.preload = 'auto';
+  
+  // Attempt to play audio when the page loads
+  // Note: This might be blocked by browsers without user interaction
+  window.addEventListener('load', function() {
+    // Wait for the rest of the page to finish loading
+    setTimeout(() => {
+      if (audioPreference !== 'off') {
         backgroundMusic.play().then(() => {
           audioPlaying = true;
         }).catch(error => {
           console.log('Auto-play prevented by browser:', error);
-          audioPlaying = false;
-          audioOnIcon.style.display = 'none';
-          audioOffIcon.style.display = 'block';
+          // If auto-play fails, set up for first interaction
+          setupFirstInteractionPlay();
         });
-      }, 1000);
-    }
-  }, 500); // Delay audio loading
-};
+      }
+    }, 500);
+  });
+}
 
-// Listen for initial interaction
-document.addEventListener('click', setupAudioAfterInteraction);
-document.addEventListener('touchstart', setupAudioAfterInteraction);
-document.addEventListener('keydown', setupAudioAfterInteraction);
+// Fallback function to play on first interaction if autoplay fails
+function setupFirstInteractionPlay() {
+  const firstInteraction = function() {
+    document.removeEventListener('click', firstInteraction);
+    document.removeEventListener('touchstart', firstInteraction);
+    document.removeEventListener('keydown', firstInteraction);
+    
+    if (audioPreference !== 'off' && !audioPlaying) {
+      backgroundMusic.play().then(() => {
+        audioPlaying = true;
+        audioOnIcon.style.display = 'block';
+        audioOffIcon.style.display = 'none';
+      }).catch(error => {
+        console.error('Audio playback failed even after interaction:', error);
+      });
+    }
+  };
+  
+  // Listen for initial interaction
+  document.addEventListener('click', firstInteraction);
+  document.addEventListener('touchstart', firstInteraction);
+  document.addEventListener('keydown', firstInteraction);
+}
 
 // Toggle audio on button click
 audioControl.addEventListener('click', function(e) {
