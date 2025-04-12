@@ -153,3 +153,118 @@ document.addEventListener('DOMContentLoaded', function() {
     item.addEventListener('touchend', mouseleaveFn);
   });
 });
+
+
+
+// Add this script to handle lazy loading of the GIF
+document.addEventListener('DOMContentLoaded', function() {
+  // Handle lazy loading for GIFs
+  var lazyGifs = document.querySelectorAll('.lazy-gif');
+  
+  if ('IntersectionObserver' in window) {
+    let lazyGifObserver = new IntersectionObserver(function(entries, observer) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          let lazyGif = entry.target;
+          lazyGif.src = lazyGif.dataset.src;
+          lazyGif.classList.remove('lazy-gif');
+          lazyGifObserver.unobserve(lazyGif);
+        }
+      });
+    });
+    
+    lazyGifs.forEach(function(lazyGif) {
+      lazyGifObserver.observe(lazyGif);
+    });
+  } else {
+    // Fallback for browsers without intersection observer
+    setTimeout(function() {
+      lazyGifs.forEach(function(lazyGif) {
+        lazyGif.src = lazyGif.dataset.src;
+        lazyGif.classList.remove('lazy-gif');
+      });
+    }, 500); // Small delay to allow critical content to load first
+  }
+});
+
+
+// Optimized audio handling
+const audioControl = document.getElementById('audioControl');
+const audioOnIcon = document.getElementById('audioOnIcon');
+const audioOffIcon = document.getElementById('audioOffIcon');
+const backgroundMusic = document.getElementById('backgroundMusic');
+
+// Check if user previously set a preference
+const audioPreference = localStorage.getItem('audioPreference');
+let audioPlaying = false;
+
+// Set the initial state of audio icons based on preference
+if (audioPreference === 'off') {
+  audioPlaying = false;
+  audioOnIcon.style.display = 'none';
+  audioOffIcon.style.display = 'block';
+} else {
+  audioOnIcon.style.display = 'block';
+  audioOffIcon.style.display = 'none';
+}
+
+// Only start audio loading/playing after user interaction
+const setupAudioAfterInteraction = function() {
+  // Only set up once
+  document.removeEventListener('click', setupAudioAfterInteraction);
+  document.removeEventListener('touchstart', setupAudioAfterInteraction);
+  document.removeEventListener('keydown', setupAudioAfterInteraction);
+  
+  // Defer loading the audio file
+  setTimeout(() => {
+    if (audioPreference !== 'off') {
+      // Start loading the audio file
+      backgroundMusic.preload = 'auto';
+      
+      // Play after a slight delay to prevent blocking
+      setTimeout(() => {
+        backgroundMusic.play().then(() => {
+          audioPlaying = true;
+        }).catch(error => {
+          console.log('Auto-play prevented by browser:', error);
+          audioPlaying = false;
+          audioOnIcon.style.display = 'none';
+          audioOffIcon.style.display = 'block';
+        });
+      }, 1000);
+    }
+  }, 500); // Delay audio loading
+};
+
+// Listen for initial interaction
+document.addEventListener('click', setupAudioAfterInteraction);
+document.addEventListener('touchstart', setupAudioAfterInteraction);
+document.addEventListener('keydown', setupAudioAfterInteraction);
+
+// Toggle audio on button click
+audioControl.addEventListener('click', function(e) {
+  e.stopPropagation(); // Prevent triggering document click
+  
+  if (audioPlaying) {
+    backgroundMusic.pause();
+    audioPlaying = false;
+    audioOnIcon.style.display = 'none';
+    audioOffIcon.style.display = 'block';
+    localStorage.setItem('audioPreference', 'off');
+  } else {
+    // Ensure audio file is loaded before playing
+    if (backgroundMusic.readyState === 0) {
+      backgroundMusic.preload = 'auto';
+      backgroundMusic.load();
+    }
+    
+    backgroundMusic.play().then(() => {
+      audioPlaying = true;
+      audioOnIcon.style.display = 'block';
+      audioOffIcon.style.display = 'none';
+      localStorage.setItem('audioPreference', 'on');
+    }).catch(error => {
+      console.error('Audio playback failed:', error);
+    });
+  }
+});
