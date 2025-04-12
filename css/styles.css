@@ -96,13 +96,18 @@
   width: 100%;
   height: 100%;
   border: none;
+  display: flex;
+  justify-content: flex-start;
 }
   
   .vp-center {
     display: flex;
     align-items: center;
-    justify-content: left;
-} 
+    justify-content: flex-start;
+}
+
+
+
   /* Menu styles */
   .menu--tsula { 
     font-family: 'Space Mono', monospace; 
