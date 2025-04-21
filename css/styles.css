@@ -69,7 +69,7 @@
   /* Logo */
   .logo {
     display: flex;
-    justify-content: left;
+    justify-content: center;
     margin-bottom: 30px;
   }
   
