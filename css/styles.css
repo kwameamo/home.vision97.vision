@@ -62,7 +62,7 @@
   
   .menu {
     width: 100%;
-    max-width: 800px;
+    max-width: 300px;
     margin: 0 auto;
   }
   
@@ -74,7 +74,7 @@
   }
   
   .logo img {
-    width: 200px;
+    width: 100px;
     height: auto;
     max-width: 100%;
   }
