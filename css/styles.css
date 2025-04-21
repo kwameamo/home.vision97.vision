@@ -62,7 +62,7 @@
   
   .menu {
     width: 100%;
-    max-width: 350px;
+    max-width: 450px;
     margin: 0 auto;
   }
   
@@ -181,8 +181,10 @@
   .footer-text {
     margin-top: 40px;
     text-align: center;
-    font-size: 0.6em;
+    font-size: 0.8em;
     color: #999caa;
+    position: fixed;
+    bottom: 20px;
   }
   
   /* Animations */
