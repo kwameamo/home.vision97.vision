@@ -184,6 +184,7 @@
     color: #999caa;
     position: fixed;
     width: 100%;
+    max-width: 450px;
     bottom: 20px;
     display: flex;
     align-items: center;
