@@ -62,7 +62,7 @@
   
   .menu {
     width: 100%;
-    max-width: 300px;
+    max-width: 350px;
     margin: 0 auto;
   }
   
@@ -74,7 +74,7 @@
   }
   
   .logo img {
-    width: 100px;
+    width: 150px;
     height: auto;
     max-width: 100%;
   }
@@ -109,7 +109,7 @@
   }
   
   .menu--tsula .menu__item-name {
-    font-size: 1em;
+    font-size: 0.8em;
     text-transform: uppercase;
     color: #5a5bd3;
     transition: background 0.2s, color 0.2s;
@@ -137,7 +137,7 @@
   .menu--tsula .menu__item-label {
     margin: 0;
     color: #999caa;
-    font-size: 0.95em;
+    font-size: 0.8em;
   }
   
   .menu--tsula .menu__item-label span {
@@ -169,7 +169,7 @@
   }
   
   .menu__item-name { 
-    font-size: 1.25em; 
+    font-size: 0.8em; 
   }
   
   .menu__item-label { 
@@ -181,7 +181,7 @@
   .footer-text {
     margin-top: 40px;
     text-align: center;
-    font-size: 0.9em;
+    font-size: 0.6em;
     color: #999caa;
   }
   
@@ -208,17 +208,17 @@
     }
     
     .logo img {
-      width: 200px;
+      width: 150px;
     }
     
     .menu__item-name {
-      font-size: 1.1em;
+      font-size: 0.8em;
     }
     
     .menu__item-label {
       display: inline-block;
       margin: 0 0 0 0.5em;
-      font-size: 0.9em;
+      font-size: 0.8em;
     }
     
     .menu--tsula .menu__item {
@@ -232,7 +232,7 @@
     }
     
     .logo img {
-      width: 200px;
+      width: 150px;
     }
     
     .menu__item {
@@ -240,11 +240,11 @@
     }
     
     .menu__item-name {
-      font-size: 1em;
+      font-size: 0.8em;
     }
     
     .menu__item-label {
-      font-size: 0.85em;
+      font-size: 0.8em;
       display: block;
       margin: 0.3em 0 0 0.5em;
     }
