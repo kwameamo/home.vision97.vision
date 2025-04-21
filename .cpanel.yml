@@ -1,0 +1,6 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/$visizwes/public_html/myproject
+    - mkdir -p $DEPLOYPATH
+    - rsync -av --exclude='.git' --exclude='.env' --exclude='.cpanel.yml' ./ $DEPLOYPATH
