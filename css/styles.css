@@ -70,7 +70,7 @@
   .logo {
     display: flex;
     justify-content: center;
-    margin-bottom: 30px;
+    margin-bottom: 50px;
   }
   
   .logo img {
@@ -180,11 +180,13 @@
   /* Footer */
   .footer-text {
     margin-top: 40px;
-    text-align: center;
     font-size: 0.8em;
     color: #999caa;
     position: fixed;
     bottom: 20px;
+    display: flex;
+    align-items: center;
+    text-align: center;
   }
   
   /* Animations */
